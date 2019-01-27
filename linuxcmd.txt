@@ -1,4 +1,21 @@
- 1  ll /etc/yum.repos.d/
+  7  cd /opt/
+    8  mkdir -p /opt.gitdemo
+    9  cd gitdemo/
+   10  mkdir -p /opt/gitdemo
+   11  cd gitdemo/
+   12  git init
+   13  vi  linuxcmd.txt
+   14  history
+   15   1  ll /etc/yum.repos.d/
+   16      2  cat /etcyum.repos.d/redhat-rhui.repo
+   17      3  cat /etc/yum.repos.d/redhat-rhui.repo
+   18      4  yum install httpd -y
+   19      5  rpm -qa | grep httpd
+   20      6  yum install git  -y
+   21      7  cd /opt/
+   22      8  mkdir -p /opt.gitdemo
+   23      9  cd gitdemo/
+   24     10  mkdir -p /opt/gitdemo1  ll /etc/yum.repos.d/
     2  cat /etcyum.repos.d/redhat-rhui.repo
     3  cat /etc/yum.repos.d/redhat-rhui.repo
     4  yum install httpd -y
