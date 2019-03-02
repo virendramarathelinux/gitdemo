@@ -1,0 +1,17 @@
+---
+- hosts: web all
+  user: ec2-user
+  sudo: true
+
+  vars:
+    pack_name: httpd
+
+  tasks:
+    - name: install {{ pack_name }}
+      yum: pkg={{ pack_name }} state=latest
+    - name: verify service status
+      shell: systemctl status httpd
+      register: result
+      until: result.stdout.find("active (running)") !=-1
+      retries: 5
+      delay: 5

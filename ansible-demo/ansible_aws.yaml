@@ -1,0 +1,31 @@
+- name: Create a new Demo EC2 instance
+  hosts: localhost
+  gather_facts: False
+
+  vars:
+      region: us-east-2
+      instance_type: t2.micro
+      ami: ami-0b500ef59d8335eee  # Redhat
+      keypair: AWSDemo # pem file name
+
+  tasks:
+
+    - name: Create an ec2 instance
+      ec2:
+         key_name: "{{ keypair }}"
+         aws_access_key: "AKIAIMC42XXGIJNL7IKA"
+         aws_secret_key: "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"
+         group: SG1  # security group name
+         instance_type: "{{ instance_type}}"
+         image: "{{ ami }}"
+         wait: true
+         region: "{{ region }}"
+         count: 1  # default
+         count_tag:
+            Name: "Ansible_automatedInstance"
+         instance_tags:
+            Name: "Ansible_automatedInstance"
+         vpc_subnet_id: "subnet-4e24f002"
+         assign_public_ip: yes
+      register: ec2
+    - debug: var=ec2
